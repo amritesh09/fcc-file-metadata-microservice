@@ -1,6 +1,5 @@
 var express = require('express');
 var path = require('path');
-var mongo = require('mongodb');
 var fs = require('fs');
 var fileUpload = require('express-fileupload');
 
@@ -8,12 +7,7 @@ var fileUpload = require('express-fileupload');
 var app = express();
 app.use(fileUpload());
 
-mongo.MongoClient.connect(process.env.MONGOLAB_URI || 'mongodb://localhost:27017/url-shortener', function(err, db){
-	if(err){
-		throw new Erro('Failed to connect');
-	} else {
-		console.log('Successfully connected');
-	}
+
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -28,7 +22,7 @@ app.post('/upload', function(req, res){
     }
     else {
     	console.log('uploaded successfully '+file.name);
-    	
+
     	var stats = fs.statSync(path.join(__dirname, 'uploads/file1.c'));
  	 var fileSizeInBytes = stats["size"];
  	 console.log(stats);

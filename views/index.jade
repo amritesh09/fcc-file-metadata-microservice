@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  div(class="container-fluid")
+  
+    if (err)
+        div
+            h2(style = "color: red;")= err
+    h1(class="header")
+      | FreeCodeCamp API : File metadata Microservice
+    h3 
+      form(action="/upload", method="post", enctype="multipart/form-data")
+        input(type="file", name="displayImage")
+        input(type="submit" name="Submit")
